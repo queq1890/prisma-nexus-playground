@@ -1,23 +1,12 @@
 import express from "express";
 import { ApolloServer, gql } from "apollo-server-express";
+import { createContext } from "./context";
 import schema from "./schema";
 
 const PORT = 4000;
 
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`;
-
-const resolvers = {
-  Query: {
-    hello: () => "Hello world!",
-  },
-};
-
 const app = express();
-const apollo = new ApolloServer({ schema });
+const apollo = new ApolloServer({ schema, context: createContext });
 
 apollo.applyMiddleware({ app });
 

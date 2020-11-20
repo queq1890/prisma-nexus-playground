@@ -9,11 +9,11 @@ import * as types from "./types";
 const schema = makeSchema({
   types,
   plugins: [
-    nexusPrisma(),
-    // TODO: check experimentalCRUD flag
-    // nexusPrisma({
-    //   experimentalCRUD: true,
-    // }),
+    // nexusPrisma(),
+    // // TODO: check experimentalCRUD flag
+    nexusPrisma({
+      experimentalCRUD: true,
+    }),
   ],
   outputs: {
     schema: path.join(__dirname, "./../schema.graphql"),
