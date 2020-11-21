@@ -52,7 +52,7 @@ export const Mutation = mutationType({
         user: "UserCreateInput",
       },
       resolve: async (_parent, { user }, ctx) => {
-        const { name, email, password, gender } = user;
+        const { name, email, password, gender, phone } = user;
         const hashedPassword = await hash(password, 10);
         const created = await ctx.prisma.user.create({
           data: {
@@ -60,11 +60,12 @@ export const Mutation = mutationType({
             email,
             password: hashedPassword,
             gender,
+            phone,
           },
         });
 
         return {
-          token: sign({ userId: created.id }, APP_SECRET),
+          token: sign({ userId: created.id }, process.env.JWT_SECRET),
           user: created,
         };
       },

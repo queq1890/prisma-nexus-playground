@@ -55,6 +55,7 @@ type Query {
   filterPosts(searchString: String): [Post]
   me: User
   post(id: Int): Post
+  users: [User]
 }
 
 type Subscription {

@@ -153,6 +153,7 @@ export interface NexusGenFieldTypes {
     filterPosts: Array<NexusGenRootTypes['Post'] | null> | null; // [Post]
     me: NexusGenRootTypes['User'] | null; // User
     post: NexusGenRootTypes['Post'] | null; // Post
+    users: Array<NexusGenRootTypes['User'] | null> | null; // [User]
   }
   Subscription: { // field return type
     userSignedIn: NexusGenRootTypes['User'] | null; // User
@@ -209,6 +210,7 @@ export interface NexusGenFieldTypeNames {
     filterPosts: 'Post'
     me: 'User'
     post: 'Post'
+    users: 'User'
   }
   Subscription: { // field return type name
     userSignedIn: 'User'

@@ -18,6 +18,13 @@ export const Query = queryType({
       },
     });
 
+    t.list.field("users", {
+      type: "User",
+      resolve: (parent, args, ctx) => {
+        return ctx.prisma.user.findMany();
+      },
+    });
+
     t.list.field("feed", {
       type: "Post",
       resolve: (parent, args, ctx) => {
